@@ -2,23 +2,23 @@
 const projects = [
   {
     id: 'p1',
-    title: 'Sales Dashboard — Retail Chain',
-    description: 'Interactive dashboard showing sales KPIs, cohort analysis, and seasonality insights using SQL + Tableau.',
+    title: 'Naira Exchange Rate Trends',
+    description: 'Analysis of NGN/USD exchange-rate trends, seasonality and annotated events; includes cleaned time-series and interactive charts.',
     tags: ['viz','etl'],
     link: 'projects/sales-dashboard/'
   },
   {
     id: 'p2',
-    title: 'Churn Prediction',
-    description: 'Built a classification model to predict churn; productionized features and evaluated business impact.',
+    title: 'Naira Volatility Prediction',
+    description: 'A small forecasting model that predicts high-volatility months for the Nigerian Naira using historical returns and macro features.',
     tags: ['ml'],
     link: 'projects/churn-prediction/'
   },
   {
     id: 'p3',
-    title: 'Marketing A/B Analysis',
-    description: 'Designed and analyzed A/B tests for marketing campaigns; computed power and sample-size planning.',
-    tags: ['stats'],
+    title: 'Inflation Impact on Naira Purchasing Power',
+    description: 'Exploratory analysis comparing inflation scenarios and the effect on purchasing power (real terms) for common consumer baskets.',
+    tags: ['viz','stats'],
     link: 'projects/ab-analysis/'
   }
 ];

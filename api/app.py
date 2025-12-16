@@ -11,16 +11,17 @@ def add_cors(resp):
 @app.route('/predict')
 def predict():
     # simple logistic model: p = sigmoid(intercept + coef*mins)
+    # Accept monthly return percentage (ret) and return probability of high volatility
     try:
-        mins = float(request.args.get('mins', 240))
+        ret = float(request.args.get('ret', 2.0))
     except Exception:
-        return jsonify({'error': 'invalid mins'}), 400
-    intercept = -1.2
-    coef = -0.005
+        return jsonify({'error': 'invalid ret'}), 400
     import math
     def sigmoid(x):
         return 1.0/(1.0+math.exp(-x))
-    p = sigmoid(intercept + coef * mins)
+    # simple heuristic: larger absolute returns indicate higher volatility risk
+    score = -1.0 + 0.25 * abs(ret)
+    p = sigmoid(score)
     return jsonify({'prob': p})
 
 if __name__ == '__main__':

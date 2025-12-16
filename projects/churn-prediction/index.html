@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Churn Prediction — Demo</title>
+  <title>Naira Volatility Prediction</title>
   <link rel="stylesheet" href="../../styles.css" />
   <style>.demo{max-width:760px;margin:1rem auto;padding:1rem;background:linear-gradient(#021018,#031622);border-radius:8px}</style>
 </head>
 <body>
-  <header class="site-header"><div class="container header-inner"><a href="../../index.html">← Back</a><h1 class="brand">Churn Prediction (Demo)</h1></div></header>
+  <header class="site-header"><div class="container header-inner"><a href="../../index.html">← Back</a><h1 class="brand">Naira Volatility Prediction</h1></div></header>
   <main class="container">
     <section class="demo">
-      <p>This demo lets you tweak a customer's usage to see churn probability from a toy logistic model. The prediction is provided by a small API.</p>
-      <p><img src="screenshot.svg" alt="Churn model screenshot" style="max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.03)"></p>
-      <label>Monthly minutes: <input id="mins" type="range" min="50" max="600" value="240"></label>
-      <div style="margin-top:.5rem">Predicted churn probability: <strong id="prob">—</strong></div>
+      <p>Adjust a monthly return (%) to see the model's probability that the Naira will experience a high-volatility month.</p>
+      <p><img src="screenshot.svg" alt="Volatility screenshot" style="max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.03)"></p>
+      <label>Monthly return (%): <input id="mins" type="range" min="-20" max="20" value="2" step="0.1"></label>
+      <div style="margin-top:.5rem">Predicted high-volatility probability: <strong id="prob">—</strong></div>
     </section>
     <section class="about">
       <h4>Model</h4>
@@ -25,20 +25,18 @@
     const minsEl = document.getElementById('mins');
     const probEl = document.getElementById('prob');
     async function update(){
-      const mins = Number(minsEl.value);
-      // Try remote API, fall back to local toy model if unavailable
+      const ret = Number(minsEl.value);
       try{
-        const res = await fetch('http://127.0.0.1:5000/predict?mins='+encodeURIComponent(mins));
+        const res = await fetch('http://127.0.0.1:5000/predict?ret='+encodeURIComponent(ret));
         if(!res.ok) throw new Error('bad');
         const json = await res.json();
         probEl.textContent = (Number(json.prob)*100).toFixed(1) + '%';
         return;
       }catch(e){
-        // fallback local prediction
-        const intercept = -1.2;
-        const coef = -0.005;
+        // fallback local logistic model (higher absolute return -> higher volatility)
         function sigmoid(x){return 1/(1+Math.exp(-x));}
-        const p = sigmoid(intercept + coef*mins);
+        const score = -1.0 + 0.25 * Math.abs(ret);
+        const p = sigmoid(score);
         probEl.textContent = (p*100).toFixed(1) + '% (local)';
       }
     }
