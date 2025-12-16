@@ -5,21 +5,21 @@ const projects = [
     title: 'Sales Dashboard — Retail Chain',
     description: 'Interactive dashboard showing sales KPIs, cohort analysis, and seasonality insights using SQL + Tableau.',
     tags: ['viz','etl'],
-    link: '/projects/sales-dashboard/'
+    link: 'projects/sales-dashboard/'
   },
   {
     id: 'p2',
     title: 'Churn Prediction',
     description: 'Built a classification model to predict churn; productionized features and evaluated business impact.',
     tags: ['ml'],
-    link: '/projects/churn-prediction/'
+    link: 'projects/churn-prediction/'
   },
   {
     id: 'p3',
     title: 'Marketing A/B Analysis',
     description: 'Designed and analyzed A/B tests for marketing campaigns; computed power and sample-size planning.',
     tags: ['stats'],
-    link: '/projects/ab-analysis/'
+    link: 'projects/ab-analysis/'
   }
 ];
 
