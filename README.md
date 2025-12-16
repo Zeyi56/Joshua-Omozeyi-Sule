@@ -48,4 +48,14 @@ Project links
 - Volatility model: https://github.com/Zeyi56/Joshua-Omozeyi-Sule/tree/main/projects/churn-prediction
 - Inflation impact: https://github.com/Zeyi56/Joshua-Omozeyi-Sule/tree/main/projects/ab-analysis
 
+Power BI
+--------
+Add your Power BI report links to each project's `Links & Source` section. Example dashboard URL format:
+
+```
+https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT
+```
+
+To publish live predictions, deploy the API under `api/app.py` to a managed host, then update the project page `API_URL` to the deployed endpoint.
+
 License: CC0 — use and adapt freely.
