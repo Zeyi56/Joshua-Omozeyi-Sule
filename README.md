@@ -42,4 +42,10 @@ python3 -m http.server 41933
 
 Then open `http://127.0.0.1:41933/` in your browser. The churn demo will call the API at `http://127.0.0.1:5000/predict`.
 
+Project links
+------------
+- Sales / Naira trends: https://github.com/Zeyi56/Joshua-Omozeyi-Sule/tree/main/projects/sales-dashboard
+- Volatility model: https://github.com/Zeyi56/Joshua-Omozeyi-Sule/tree/main/projects/churn-prediction
+- Inflation impact: https://github.com/Zeyi56/Joshua-Omozeyi-Sule/tree/main/projects/ab-analysis
+
 License: CC0 — use and adapt freely.
