@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Data Analyst Portfolio — Sule Joshua Omozeyi</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">Sule Joshua Omozeyi</h1>
+      <nav class="nav">
+        <a href="#about">Data Analytics</a>
+        <a href="#skills">SQL, Power BI, Python, Excel </a>
+        <a href="#projects">Data cleaning and exploratory analysis, Sales analysis and Visualisation</a>
+        <a href="#contact"> joshysule@gmail.com </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Data Analyst</h2>
+        <p class="lead">Turning data into insight: dashboards, analysis, and reproducible pipelines.</p>
+        <p class="cta-row">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="resume.pdf" download>Download Resume</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="about" class="container about">
+      <h3>About</h3>
+      <p>I am a data analyst focused on producing actionable insights using Python, SQL, and visualization tools. I build reproducible analyses, dashboards, and models to support data-driven decisions.</p>
+    </section>
+
+    <section id="skills" class="container skills">
+      <h3>Skills</h3>
+      <ul class="skills-grid">
+        <li><strong>Languages:</strong> Python, SQL, R</li>
+        <li><strong>Viz:</strong> Tableau, Power BI, matplotlib, seaborn, Altair</li>
+        <li><strong>Data:</strong> Pandas, NumPy, PostgreSQL, BigQuery</li>
+        <li><strong>ML / Stats:</strong> scikit-learn, A/B testing, time series</li>
+        <li><strong>Tools:</strong> Git, Docker, Airflow, Looker</li>
+        <li><strong>Communication:</strong> storytelling, dashboards, slide decks</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="container projects">
+      <div class="projects-header">
+        <h3>Selected Projects</h3>
+        <div class="filters">
+          <label>Filter: <select id="proj-filter"><option value="all">All</option><option value="viz">Visualization</option><option value="ml">Modeling</option><option value="etl">ETL</option></select></label>
+        </div>
+      </div>
+      <div id="project-list" class="project-list"></div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h3>Contact</h3>
+      <p>If you'd like to collaborate or see more details, email <a href="mailto:you@example.com">you@example.com</a> or connect on LinkedIn.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© Sule Joshua Omozeyi — Data Analyst</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sales Dashboard — Demo</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style> .demo-chart{width:100%;max-width:760px;margin:1rem auto;height:320px;background:linear-gradient(#021018,#031622);border-radius:8px;padding:1rem;color:var(--text)} svg{width:100%;height:100%} </style>
+</head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a href="/">← Back</a><h1 class="brand">Sales Dashboard (Demo)</h1></div></header>
+  <main class="container">
+    <section class="about">
+      <p>Interactive demo of a sales KPI bar chart. Source: simulated data.</p>
+    </section>
+
+    <section class="demo-chart" aria-label="Monthly sales chart">
+      <svg id="sales-chart" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid meet"></svg>
+    </section>
+
+    <section class="about">
+      <h4>Screenshot</h4>
+      <p><img src="/projects/sales-dashboard/screenshot.svg" alt="Sales dashboard screenshot" style="max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.03)"></p>
+    </section>
+
+    <section class="about">
+      <h4>Notebook</h4>
+      <p>Preview of the analysis notebook used to build the chart:</p>
+      <iframe src="/projects/sales-dashboard/notebook.html" style="width:100%;height:420px;border:1px solid rgba(255,255,255,0.04);border-radius:8px"></iframe>
+    </section>
+
+    <section class="about">
+      <h4>Notes</h4>
+      <p>This is a static demo intended to show how a dashboard preview might appear. Replace with embedded Tableau/PowerBI or iframe of real dashboard for production.</p>
+    </section>
+  </main>
+
+  <script>
+    const data = [120, 180, 150, 220, 260, 300, 280, 310, 340, 320, 360, 400];
+    const svg = document.getElementById('sales-chart');
+    const w = 800; const h = 320; const padding = 40;
+    const max = Math.max(...data);
+    const barW = (w - padding*2) / data.length;
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    data.forEach((d,i)=>{
+      const x = padding + i*barW + 6;
+      const barH = (d/max) * (h - padding*2);
+      const y = h - padding - barH;
+      const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      rect.setAttribute('x', x);
+      rect.setAttribute('y', y);
+      rect.setAttribute('width', Math.max(0, barW - 12));
+      rect.setAttribute('height', barH);
+      rect.setAttribute('fill', '#0ea5a6');
+      rect.setAttribute('rx', 4);
+      svg.appendChild(rect);
+      const text = document.createElementNS('http://www.w3.org/2000/svg','text');
+      text.setAttribute('x', x + (barW-12)/2);
+      text.setAttribute('y', h - padding + 14);
+      text.setAttribute('fill', '#9aa4b2');
+      text.setAttribute('font-size', '12');
+      text.setAttribute('text-anchor','middle');
+      text.textContent = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][i];
+      svg.appendChild(text);
+    });
+  </script>
+</body>
+</html>
